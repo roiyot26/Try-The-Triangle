@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Interface - Input Page</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Try The Triangle</h1>
+        <div class="input-section">
+            <h2> Please Enter Three Points</h2>
+            <div class="point-inputs">
+                <div class="point-group">
+                    <h3>Point A</h3>
+                    <div class="input-group">
+                        <label for="ax">X:</label>
+                        <input type="number" id="ax" placeholder="Enter X coordinate">
+                    </div>
+                    <div class="input-group">
+                        <label for="ay">Y:</label>
+                        <input type="number" id="ay" placeholder="Enter Y coordinate">
+                    </div>
+                </div>
+                
+                <div class="point-group">
+                    <h3>Point B</h3>
+                    <div class="input-group">
+                        <label for="bx">X:</label>
+                        <input type="number" id="bx" placeholder="Enter X coordinate">
+                    </div>
+                    <div class="input-group">
+                        <label for="by">Y:</label>
+                        <input type="number" id="by" placeholder="Enter Y coordinate">
+                    </div>
+                </div>
+                
+                <div class="point-group">
+                    <h3>Point C</h3>
+                    <div class="input-group">
+                        <label for="cx">X:</label>
+                        <input type="number" id="cx" placeholder="Enter X coordinate">
+                    </div>
+                    <div class="input-group">
+                        <label for="cy">Y:</label>
+                        <input type="number" id="cy" placeholder="Enter Y coordinate">
+                    </div>
+                </div> 
+            </div>
+            
+            <button id="showTriangleBtn" class="show-triangle-btn">Show Triangle</button>
+            <button id="showSampleDataBtn" onclick="loadSampleData()" class="show-sample-data-btn">Load Sample Data</button>
+        </div>
+    </div>
+    
+    <script type="module" src="src/js/script.js"></script>
+</body>
+</html>

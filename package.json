@@ -1,0 +1,36 @@
+{
+  "name": "triangle-interface",
+  "version": "1.0.0",
+  "description": "A modern web application for visualizing triangles and calculating their angles",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 3000",
+    "build": "echo 'No build process needed for static files'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "triangle",
+    "geometry",
+    "canvas",
+    "javascript",
+    "html5",
+    "angles",
+    "visualization"
+  ],
+  "author": "Triangle Interface Developer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/triangle-interface.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/triangle-interface/issues"
+  },
+  "homepage": "https://github.com/username/triangle-interface#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
