@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const storedPoints = sessionStorage.getItem('trianglePoints');
     if (storedPoints) {
         points = JSON.parse(storedPoints);
+        
+        // Validate triangle
+        if (!isValidTriangle(points)) {
+            showErrorModal();
+            return;
+        }
+        
         drawTriangle();
     } else {
         // If no points, redirect back to input page
@@ -28,6 +35,63 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = '../../index.html';
     });
     
+    // Show error modal for invalid triangle
+    function showErrorModal() {
+        const modal = document.getElementById('errorModal');
+        modal.style.display = 'block';
+        
+        // Add event listener to OK button
+        const okBtn = document.getElementById('modalOkBtn');
+        okBtn.onclick = function() {
+            modal.style.display = 'none';
+            sessionStorage.removeItem('trianglePoints');
+            window.location.href = '../../index.html';
+        };
+        
+        // Close modal when clicking outside
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                sessionStorage.removeItem('trianglePoints');
+                window.location.href = '../../index.html';
+            }
+        };
+    }
+
+    // Validate if three points form a valid triangle (not collinear)
+    function isValidTriangle(points) {
+        // Calculate vectors
+        const vectorAB = { x: points.B.x - points.A.x, y: points.B.y - points.A.y };
+        const vectorAC = { x: points.C.x - points.A.x, y: points.C.y - points.A.y };
+        
+        // Calculate cross product (determinant)
+        const crossProduct = vectorAB.x * vectorAC.y - vectorAB.y * vectorAC.x;
+        
+        // If cross product is 0, points are collinear
+        return Math.abs(crossProduct) > 0.001; // Small tolerance for floating point errors
+    }
+    
+    // Validate angles (should sum to 180 degrees)
+    function validateAngles(angles) {
+        const sum = angles.A + angles.B + angles.C;
+        const tolerance = 0.1; // Small tolerance for floating point errors
+        
+        if (Math.abs(sum - 180) > tolerance) {
+            console.warn(`Angle validation failed: Sum = ${sum.toFixed(2)}°, Expected: 180°`);
+            return false;
+        }
+        
+        // Check for invalid angles (0 or 180 degrees)
+        for (const [vertex, angle] of Object.entries(angles)) {
+            if (angle <= 0 || angle >= 180) {
+                console.warn(`Invalid angle at vertex ${vertex}: ${angle.toFixed(2)}°`);
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
     function drawTriangle() {
         // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -46,6 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Calculate and draw angles
         const angles = calculateAngles(scaledPoints);
+        
+        // Validate angles
+        if (!validateAngles(angles)) {
+            console.warn('Angle validation failed - angles may not be accurate');
+        }
+        
         drawAngles(scaledPoints, angles);
         
         // Draw angle labels

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Check if any coordinates are missing
         if (!points.A.x || !points.A.y || !points.B.x || !points.B.y || !points.C.x || !points.C.y) {
-            alert('Please enter all coordinate values for points A, B, and C');
+            showErrorModal();
             return; // Stop execution if validation fails
         }
         
@@ -34,6 +34,25 @@ document.addEventListener('DOMContentLoaded', function () {
         // Navigate to display page
         window.location.href = 'src/pages/display.html';
     });
+
+    // Show error modal for missing coordinates
+    function showErrorModal() {
+        const modal = document.getElementById('errorModal');
+        modal.style.display = 'block';
+        
+        // Add event listener to OK button
+        const okBtn = document.getElementById('modalOkBtn');
+        okBtn.onclick = function() {
+            modal.style.display = 'none';
+        };
+        
+        // Close modal when clicking outside
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    }
 
 });
 // Make loadSampleData globally accessible

@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
+    <!-- Validation Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚠️ Invalid Triangle</h2>
+            </div>
+            <div class="modal-body">
+                <p>The three points you entered are collinear (they lie on the same line).</p>
+                <p>Please enter different coordinates to form a valid triangle.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="modalOkBtn" class="modal-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <h1>Triangle Display</h1>
         <div class="display-section">
