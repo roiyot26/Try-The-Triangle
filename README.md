@@ -4,7 +4,7 @@ A web application for visualizing triangles and calculating their angles based o
 
 ## Quick Start
 
-1. Open `index.html` in your browser
+1. Open (https://roiyot26.github.io/Try-The-Triangle/) in your browser
 2. Enter coordinates for three points (A, B, C)
 3. Click "Show Triangle" to see the visualization
 
